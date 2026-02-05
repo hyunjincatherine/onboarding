@@ -9,7 +9,7 @@ export default function LoginCard() {
   const sendLink = async () => {
     await supabase.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: window.location.origin }
+      options: { emailRedirectTo: window.location.origin },
     });
     setSent(true);
   };
@@ -26,8 +26,4 @@ export default function LoginCard() {
       {sent && <p>메일 확인해줘!</p>}
     </div>
   );
-
-
-
-
-
+}
