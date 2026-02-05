@@ -659,7 +659,7 @@ export default function DashboardSimple({
     color: "#475569",
   }}
 >
-  📌 <b>PoC</b>:{" "}
+  📌 <b>문의</b>:{" "}
   <a
     href="https://slack.com/app_redirect?channel=C01PP4L905D"
     target="_blank"
