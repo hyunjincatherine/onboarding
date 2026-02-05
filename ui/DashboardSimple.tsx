@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 
+
 type Mission = {
   id: number;
   title: string;
