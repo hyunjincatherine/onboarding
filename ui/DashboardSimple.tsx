@@ -696,8 +696,8 @@ export default function DashboardSimple({
   </div>
 </div>
 
-            <img
-  src={`${prefix}/images/newimage.png`}
+<img
+  src="./images/newimage.png"
   alt="온보딩 로드맵"
   style={{
     width: "100%",
