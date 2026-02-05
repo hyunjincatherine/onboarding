@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 
 type Mission = {
   id: number;
@@ -426,6 +428,9 @@ export default function DashboardSimple({
 
             {/* 3) 미션 목록 */}
             <Card title={`✅ 미션 목록 (진행률 ${doneCount}/${MISSIONS.length})`}>
+            <div style={{ fontSize: 13, opacity: 0.75, marginBottom: 10 }}>
+    🖱️ 미션을 클릭하면 우측에서 상세 내용을 확인할 수 있어요.
+  </div>
               <div style={{ display: "grid", gap: 10 }}>
                 {MISSIONS.map((m) => (
                   <div
@@ -617,17 +622,93 @@ export default function DashboardSimple({
             }}
           >
             <div style={{ fontWeight: 900, marginBottom: 10 }}>🗺️ 온보딩 로드맵</div>
+            <div
+  style={{
+    marginBottom: 14,
+    padding: 14,
+    borderRadius: 14,
+    background: "#f8fafc",
+    border: "1px solid #e2e8f0",
+    lineHeight: 1.7,
+    color: "#111827",
+  }}
+>
+  <div style={{ fontWeight: 800, marginBottom: 8 }}>
+    아래 로드맵을 통해 크래프톤에서의 온보딩 미션을 한눈에 확인해 보세요!
+  </div>
+
+  <div style={{ marginBottom: 10 }}>
+    미션 1부터 7까지 차근차근 완수한 모든 분께 축하의 마음을 담아 소정의 선물과 수료증을 드립니다. 🎁
+  </div>
+
+  <div style={{ fontSize: 14, color: "#334155" }}>
+    <div style={{ marginBottom: 6 }}>
+      • <b>선물 및 수료증 증정</b>: 모든 미션과 Value-up 세션까지 참석을 완료하시면, 담당자가 확인 후 개별적으로 전달드릴 예정이에요.
+    </div>
+    <div>
+      • <b>미션 수행 관련 문의</b>: 부득이한 사유로 정해진 기한 내에 미션 달성이 어렵다면, 주저하지 말고 담당자에게 미리 문의해 주세요.
+        </div>
+  </div>
+</div>
+<div
+  style={{
+    marginTop: 12,
+    paddingTop: 10,
+    borderTop: "1px dashed #e5e7eb",
+    fontSize: 15,
+    color: "#475569",
+  }}
+>
+  📌 <b>PoC</b>:{" "}
+  <a
+    href="https://slack.com/app_redirect?channel=C01PP4L905D"
+    target="_blank"
+    rel="noreferrer"
+    style={{ fontWeight: 700, color: "#2563eb", textDecoration: "none" }}
+  >
+    #ask-training
+  </a>
+
+  <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
+
+  <a
+    href="https://slack.com/app_redirect?channel=U08SXTW8L00"
+    target="_blank"
+    rel="noreferrer"
+    style={{ fontWeight: 700, color: "#2563eb", textDecoration: "none" }}
+  >
+    💬 Slack DM
+  </a>
+
+  <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
+
+  <a
+    href="mailto:hyunjin@krafton.com"
+    style={{ fontWeight: 700, color: "#2563eb", textDecoration: "none" }}
+  >
+    📧 이메일
+  </a>
+
+  {/* 클릭 안내 문구 */}
+  <div style={{ marginTop: 6, fontSize: 14, opacity: 0.7 }}>
+    ※ 항목을 클릭하면 해당 채널 또는 DM/이메일로 바로 이동해요.
+  </div>
+</div>
+
             <img
-              src="/images/roadmap.png"
-              alt="온보딩 로드맵"
-              style={{
-                width: "100%",
-                height: "auto",
-                objectFit: "contain",
-                display: "block",
-                borderRadius: 12,
-              }}
-            />
+  src={`${prefix}/images/newimage.png`}
+  alt="온보딩 로드맵"
+  style={{
+    width: "100%",
+    height: "auto",
+    objectFit: "contain",
+    display: "block",
+    borderRadius: 12,
+  }}
+/>
+
+
+
           </div>
         )}
 
