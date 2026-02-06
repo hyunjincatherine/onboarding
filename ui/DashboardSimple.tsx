@@ -854,4 +854,3 @@ export default function DashboardSimple({
     </div>
   </div>
 )}
-{/* FAQ 탭 끝 */}
