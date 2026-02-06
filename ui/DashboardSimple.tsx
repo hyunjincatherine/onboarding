@@ -778,12 +778,8 @@ export default function DashboardSimple({
     borderRadius: 12,
   }}
 />
-
-
-
           </div>
         )}
-
       {/* FAQ 탭 시작 */}
 {tab === "FAQ" && (
   <div style={{ marginTop: 18, display: "grid", gap: 20 }}>
@@ -859,5 +855,6 @@ export default function DashboardSimple({
       </Card>
       </div>
   </div>
+);
 )}
 {/* FAQ 탭 끝 */}
