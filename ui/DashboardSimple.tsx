@@ -347,6 +347,13 @@ const [profile, setProfile] = useState<{
 
   const doneCount = Object.values(checked).filter(Boolean).length;
   const nextMission = Math.min(MISSIONS.length, doneCount + 1);
+  const recommendedMission =
+  MISSIONS.find((m) => m.id === nextMission) ?? MISSIONS[0];
+  const otDateObj = profile?.otDate ? new Date(profile.otDate) : null;
+
+  const expectedCompleteDate = otDateObj
+    ? new Date(otDateObj.getFullYear(), otDateObj.getMonth() + 3, otDateObj.getDate())
+    : null; 
 
   function formatNameFromEmail(emailStr: string) {
     const local = emailStr.split("@")[0];
