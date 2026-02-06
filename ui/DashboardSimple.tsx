@@ -5,43 +5,43 @@ const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const FAQ_ITEMS = [
   {
     q: "Q1. 온보딩 기간은 언제부터 계산하면 될까요?",
-    a: "입사 첫날 진행되는 Day 1 Orientation이 시작점이에요. 담당자가 시기에 맞춰 가이드를 드릴 예정이니, 직접 계산하며 부담 갖지 않으셔도 괜찮습니다. 저희가 잘 챙겨드릴게요!",
+    a: "입사 첫날 진행되는 Day 1 Orientation이 시작점이에요. 담당자가 시기에 맞춰 가이드를 드릴 예정이니, 직접 계산하며 부담 갖지 않으셔도 괜찮습니다. 저희가 꼼꼼히 챙겨드릴게요!",
   },
   {
-    q: "Q2. 업무 일정 때문에 온라인 교육 참석이 어려운데 어쩌죠?",
+    q: "Q2. 업무 일정 때문에 교육 참석이 어려운데 어떻게 해야 하나요?",
     a: "업무가 우선인 상황이라면 당연히 조정 가능합니다. 담당자에게 미리 사유를 알려주시면, 다음 분기 교육으로 입과 일정을 변경해 드릴게요.",
   },
   {
     q: "Q3. 온보딩 선물은 언제 받을 수 있나요? 🎁",
-    a: "온보딩 과정을 모두 마치면, 수료 시점에 맞춰 각 거점의 헬프데스크로 선물을 보내드려요. 마지막까지 조금만 더 힘내주세요!",
+    a: "온보딩 과정을 모두 완주하시면, 수료 시점에 맞춰 각 거점의 헬프데스크로 선물을 보내드려요. 마지막 미션까지 즐겁게 임해주세요!",
   },
   {
     q: "Q4. Workday에 수료증 업로드 태스크가 계속 떠 있는데, 무시해도 되나요?",
-    a: "네, 괜찮습니다! 수료증은 입사 3개월 후 모든 프로세스가 종료되어야 발급되거든요. 그전까지 Workday에 표시되는 날짜는 신경 쓰지 마시고 편하게 넘겨주세요.",
+    a: "네, 괜찮습니다! 수료증은 입사 3개월 후 모든 프로세스가 종료되어야 발급됩니다. 그전까지 Workday에 표시되는 마감 날짜는 신경 쓰지 마시고 편하게 넘겨주시면 됩니다.",
   },
   {
     q: "Q5. 수료증은 실물로 받게 되나요?",
-    a: "수료증은 PDF 전자 파일로 전달해 드립니다. 파일을 받으신 후 Workday에 업로드해 주시면 최종 완료됩니다.",
+    a: "수료증은 PDF 전자 파일로 전달해 드립니다. 파일을 받으신 후 Workday에 업로드해 주시면 모든 절차가 최종 완료됩니다.",
   },
   {
     q: "Q6. '창한님과의 만남' 오프라인 참석도 가능한가요?",
-    a: "강의장 수용 인원이 제한되어 있어 아쉽게도 선착순으로 마감될 예정이에요. 현장 참석을 원하신다면 공지가 떴을 때 빠르게 신청해 주세요!",
+    a: "현장 강의장의 수용 인원이 제한되어 있어, 아쉽게도 선착순으로 마감될 예정입니다. 현장 참석을 희망하신다면 입과 안내문을 보내드릴 때 빠르게 신청해 주시기를 추천드려요!",
   },
   {
-    q: "Q7. 참석을 못 하면 내용을 아예 알 수 없나요? 녹화본은요?",
-    a: "녹화본은 따로 제공되지 않지만, 걱정 마세요! Wiki에 모든 Q&A 내용을 꼼꼼히 기록해 공유해 드릴 예정이니 언제든 확인하실 수 있습니다.",
+    q: "Q7. '창한님과의 만남' 참석을 못 할 경우 녹화본은 제공되나요?",
+    a: "녹화본은 따로 제공되지 않지만, 걱정 마세요! Wiki에 모든 Q&A 내용을 기록해 공유해 드릴 예정이니 언제든 확인하실 수 있습니다.",
   },
   {
     q: "Q8. 핵심가치 교육 자료를 따로 소장할 수 있을까요?",
-    a: "그럼요! 교육 일주일 후에 담당자가 리마인드 학습 자료를 보내드립니다. 업무 중에 참고가 필요할 때마다 유용하게 활용해 보세요.",
+    a: "그럼요! 교육 종료 일주일 후에 담당자가 리마인드 학습 자료를 보내드립니다. 참고가 필요할 때마다 유용하게 활용해 보세요.",
   },
   {
-    q: "Q9. 온보딩을 수료하지 않으면 혹시 불이익이 있나요?",
-    a: "직접적인 불이익은 없습니다. 다만, 온보딩 미션들은 여러분의 원활한 적응을 돕기 위한 필수 정보들을 담고 있어요. 성공적인 회사 생활을 위해 수료하시는 것을 적극 권장합니다.",
+    q: "Q9. 온보딩을 수료하지 않으면 불이익이 있나요?",
+    a: "별도의 불이익은 없습니다. 다만, 온보딩 미션들은 여러분이 조직에 더 잘 적응하실 수 있도록 돕는 필수 정보들을 담고 있습니다. 성공적인 안착을 위해 수료하시는 것을 적극 권장해 드립니다.",
   },
   {
     q: "Q10. 온보딩 프로그램 대상자는 누구인가요?",
-    a: "KRAFTON HQ와 PUBG STUDIOS의 모든 구성원이 대상입니다. (정규직, 계약직, 인턴, 전문계약직 포함) 우리 모두 함께해요!",
+    a: "KRAFTON HQ와 PUBG STUDIOS의 모든 구성원이 대상입니다. (정규직, 계약직, 인턴, 전문계약직 포함) 우리 함께 즐거운 온보딩 여정을 만들어가요!",
   },
 ] as const;
 
@@ -843,16 +843,107 @@ export default function DashboardSimple({
               </div>
             </Card>
 
-            <div style={{ opacity: 0.8 }}>
-              <Card title="📊 실시간 미션 진행 현황">
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                  <div style={{ fontSize: 14 }}>
-                    현재 <b>{displayName}</b>님은 전체 미션 중 <b>{doneCount}개</b>를 완료하셨습니다.
-                  </div>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: "#2563eb" }}>
-                    {MISSIONS.length ? Math.round((doneCount / MISSIONS.length) * 100) : 0}% 완료
-                  </div>
-                </div>
+            <div
+  style={{
+    marginTop: "40px",
+    padding: "32px",
+    borderRadius: "20px",
+    backgroundColor: "rgba(255, 255, 255, 0.6)", // 투명도 있는 배경
+    backdropFilter: "blur(10px)", // 글래스모피즘 효과
+    border: "1px solid rgba(255, 255, 255, 0.3)",
+    boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05)",
+    textAlign: "center",
+  }}
+>
+  <div style={{ marginBottom: "20px" }}>
+    <h4 style={{ fontSize: "18px", fontWeight: 700, color: "#1f2937", marginBottom: "8px" }}>
+      원하시는 답변을 찾지 못하셨나요?
+    </h4>
+    <p style={{ fontSize: "14px", color: "#6b7280", margin: 0 }}>
+      온보딩 담당자가 여러분의 원활한 적응을 돕기 위해 대기하고 있습니다.
+    </p>
+  </div>
+
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: "12px",
+      flexWrap: "wrap",
+    }}
+  >
+    {/* Slack 채널 버튼 */}
+    <a
+      href="https://slack.com/app_redirect?channel=C01PP4L905D"
+      target="_blank"
+      rel="noreferrer"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        padding: "12px 20px",
+        borderRadius: "12px",
+        backgroundColor: "#ffffff",
+        color: "#2563eb",
+        fontWeight: 600,
+        fontSize: "14px",
+        textDecoration: "none",
+        boxShadow: "0 2px 8px rgba(37, 99, 235, 0.1)",
+        transition: "all 0.2s ease",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+      onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+    >
+      <span style={{ marginRight: "8px" }}>📢</span> #ask-training
+    </a>
+
+    {/* Slack DM 버튼 */}
+    <a
+      href="https://slack.com/app_redirect?channel=U08SXTW8L00"
+      target="_blank"
+      rel="noreferrer"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        padding: "12px 20px",
+        borderRadius: "12px",
+        backgroundColor: "#ffffff",
+        color: "#2563eb",
+        fontWeight: 600,
+        fontSize: "14px",
+        textDecoration: "none",
+        boxShadow: "0 2px 8px rgba(37, 99, 235, 0.1)",
+        transition: "all 0.2s ease",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+      onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+    >
+      <span style={{ marginRight: "8px" }}>💬</span> Slack DM
+    </a>
+
+    {/* Email 버튼 */}
+    <a
+      href="mailto:hyunjin@krafton.com"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        padding: "12px 20px",
+        borderRadius: "12px",
+        backgroundColor: "#ffffff",
+        color: "#2563eb",
+        fontWeight: 600,
+        fontSize: "14px",
+        textDecoration: "none",
+        boxShadow: "0 2px 8px rgba(37, 99, 235, 0.1)",
+        transition: "all 0.2s ease",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+      onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+    >
+      <span style={{ marginRight: "8px" }}>📧</span> hyunjin@krafton.com
+    </a>
+  </div>
+</div>
               </Card>
             </div>
           </div>
