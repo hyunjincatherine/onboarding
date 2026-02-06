@@ -741,7 +741,7 @@ export default function DashboardSimple({
           </div>
         )}
 
-      {/* FAQ */}
+      {/* FAQ 탭 시작 */}
       {tab === "FAQ" && (
           <div style={{ marginTop: 18, display: "grid", gap: 20 }}>
             <Card title="🙋‍♀️ KRAFTON 온보딩 FAQ: 무엇이든 물어보세요!">
@@ -815,7 +815,10 @@ export default function DashboardSimple({
                         alignItems: "center",
                       }}
                     >
-                      <span>{item.q}</span>
+                      <span style={{ display: "flex", gap: "8px" }}>
+                        <b style={{ color: "#2563eb" }}>Q.</b>
+                        <span>{item.q.split(". ")[1]}</span>
+                      </span>
                       <span style={{ fontSize: 12, opacity: 0.5 }}>▼</span>
                     </summary>
                     <div
@@ -829,14 +832,14 @@ export default function DashboardSimple({
                         whiteSpace: "pre-line",
                       }}
                     >
-                      <b>A.</b> {item.a}
+                      <b style={{ color: "#10b981", marginRight: "6px" }}>A.</b> 
+                      {item.a}
                     </div>
                   </details>
                 ))}
               </div>
             </Card>
 
-            {/* 하단 진행 현황 (FAQ 밑에 작게 배치하여 UX 유지) */}
             <div style={{ opacity: 0.8 }}>
               <Card title="📊 실시간 미션 진행 현황">
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
@@ -851,3 +854,4 @@ export default function DashboardSimple({
             </div>
           </div>
         )}
+        {/* FAQ 탭 끝 */}
