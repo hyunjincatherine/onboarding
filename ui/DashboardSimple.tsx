@@ -602,7 +602,7 @@ const expectedCompleteDate = useMemo(() => {
   {guideName ? `${guideName}님, ` : ""}
   지금은{" "}
   <span style={{ color: "#1d4ed8" }}>
-    {recommendedMissionIds.length ? `미션 ${recommendedMissionIds.join(", ")}` : "미션 추천"}
+    {recommendedMissionIds.length ? `미션 ${recommendedMissionIds.join(", ")}` : " "}
   </span>
   을 수행할 시점이에요.
 </div>
