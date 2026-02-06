@@ -942,8 +942,6 @@ export default function DashboardSimple({
     >
       <span style={{ marginRight: "8px" }}>📧</span> hyunjin@krafton.com
     </a>
-  </div>
-</div>
               </Card>
             </div>
           </div>
