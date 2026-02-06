@@ -463,28 +463,102 @@ export default function DashboardSimple({
             </Card>
 
             {/* 2) 매뉴얼 카드 */}
-            <Card title="🧑‍💼 온보딩 참고 자료">
-              <div style={{ display: "grid", gap: 10 }}>
-                <div style={{ padding: 12, borderRadius: 14, background: "#f8fafc", border: "1px solid #e2e8f0" }}>
-                  <b>신규 입사자를 위한 Information Page</b>
-                  <div style={{ fontSize: 13, opacity: 0.75, marginTop: 6 }}>
-                    신규 입사자의 첫 5일동안의 온보딩 여정을 더 편안하게 만들어 주세요.
-                  </div>
-                </div>
+<Card title="🧑‍💼 내 온보딩 추천">
+  <div style={{ display: "grid", gap: 12 }}>
+    {/* 입력 영역 */}
+    <div style={{ display: "grid", gap: 10 }}>
+      <div style={{ display: "grid", gap: 6 }}>
+        <div style={{ fontSize: 12, opacity: 0.7 }}>이름</div>
+        <input
+          value={profile.fullName}
+          onChange={(e) => setProfile((p) => ({ ...p, fullName: e.target.value }))}
+          placeholder="예: 강현진"
+          style={{
+            width: "100%",
+            padding: "10px 12px",
+            borderRadius: 12,
+            border: "1px solid #e2e8f0",
+            outline: "none",
+            background: "white",
+            fontSize: 14,
+            fontWeight: 700,
+          }}
+        />
+      </div>
 
-                <div style={{ padding: 12, borderRadius: 14, background: "#f1f5f9", border: "1px solid #e2e8f0" }}>
-                  <b>리마인더</b>
-                  <div style={{ fontSize: 13, opacity: 0.75, marginTop: 6 }}>
-                    “{nextMission}번 미션을 수행할 시기입니다” 문구를 입사 주차 기준으로 자동화할 거예요.
-                  </div>
-                </div>
+      <div style={{ display: "grid", gap: 6 }}>
+        <div style={{ fontSize: 12, opacity: 0.7 }}>OT(Orientation) 날짜</div>
+        <input
+          type="date"
+          value={profile.otDate}
+          onChange={(e) => setProfile((p) => ({ ...p, otDate: e.target.value }))}
+          max={todayStr}
+          style={{
+            width: "100%",
+            padding: "10px 12px",
+            borderRadius: 12,
+            border: "1px solid #e2e8f0",
+            outline: "none",
+            background: "white",
+            fontSize: 14,
+            fontWeight: 700,
+          }}
+        />
+      </div>
+    </div>
 
-                <div style={{ padding: 12, borderRadius: 14, background: "#eef2ff", border: "1px solid #c7d2fe" }}>
-                  💬 성공적인 온보딩을 위해 저희가 도와드릴게요! <br />
-                  궁금한 내용은 언제든 <b>#ask-training 채널</b>에 남겨주시거나, 담당자에게 편하게 <b>DM/메일</b> 주시기 바랍니다.
-                </div>
-              </div>
-            </Card>
+    {/* 추천/예상 수료 박스 */}
+    <div
+      style={{
+        borderRadius: 16,
+        border: "1px solid rgba(37,99,235,0.22)",
+        background: "linear-gradient(180deg, rgba(239,246,255,1) 0%, rgba(219,234,254,1) 100%)",
+        boxShadow: "0 10px 26px rgba(37,99,235,0.12)",
+        padding: 14,
+        display: "grid",
+        gap: 8,
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <div
+          style={{
+            width: 30,
+            height: 30,
+            borderRadius: 999,
+            background: "rgba(37,99,235,0.15)",
+            border: "1px solid rgba(37,99,235,0.25)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: 15,
+          }}
+        >
+          ✨
+        </div>
+        <div style={{ fontWeight: 900, color: "#1e3a8a" }}>오늘의 추천</div>
+      </div>
+
+      <div style={{ fontWeight: 900, color: "#1e3a8a", lineHeight: 1.4 }}>
+        {guideName}님, 지금은{" "}
+        <span style={{ color: "#1d4ed8" }}>미션 {recommendedMission.id}</span>를 수행할 시점이에요.
+      </div>
+
+      <div style={{ fontSize: 13, color: "#334155", lineHeight: 1.5 }}>
+        추천 미션: <b>{recommendedMission.title}</b>
+      </div>
+
+      <div style={{ fontSize: 13, color: "#334155", lineHeight: 1.5 }}>
+        예상 수료 시점:{" "}
+        <b>{expectedCompleteDate ? expectedCompleteDate.toLocaleDateString() : "OT 날짜를 입력하면 계산돼요"}</b>
+      </div>
+
+      <div style={{ fontSize: 12, opacity: 0.75 }}>
+        * 완료 체크 상태(done) + OT 날짜를 함께 반영해 추천이 업데이트돼요.
+      </div>
+    </div>
+  </div>
+</Card>
+
 
             {/* 3) 미션 목록 */}
             <Card title={`✅ 미션 목록 (진행률 ${doneCount}/${MISSIONS.length})`}>
