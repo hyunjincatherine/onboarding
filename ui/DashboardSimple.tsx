@@ -681,8 +681,8 @@ export default function DashboardSimple({
           </div>
         )}
 
-        {/* 온보딩 미션 보드 */}
-        {tab === "Mission" && (
+                {/* 온보딩 미션 보드 */}
+                {tab === "Mission" && (
           <div
             style={{
               width: "100%",
@@ -694,163 +694,171 @@ export default function DashboardSimple({
             }}
           >
             <div style={{ fontWeight: 900, marginBottom: 10 }}>🗺️ 온보딩 미션 보드</div>
+
             <div
-  style={{
-    marginBottom: 14,
-    padding: 14,
-    borderRadius: 14,
-    background: "#f8fafc",
-    border: "1px solid #e2e8f0",
-    lineHeight: 1.7,
-    color: "#111827",
-  }}
->
-  <div style={{ fontWeight: 800, marginBottom: 8 }}>
-    아래 미션 보드를 통해 크래프톤에서의 온보딩 미션을 한눈에 확인해 보세요!
-  </div>
+              style={{
+                marginBottom: 14,
+                padding: 14,
+                borderRadius: 14,
+                background: "#f8fafc",
+                border: "1px solid #e2e8f0",
+                lineHeight: 1.7,
+                color: "#111827",
+              }}
+            >
+              <div style={{ fontWeight: 800, marginBottom: 8 }}>
+                아래 미션 보드를 통해 크래프톤에서의 온보딩 미션을 한눈에 확인해 보세요!
+              </div>
 
-  <div style={{ marginBottom: 10 }}>
-    미션 1부터 7까지 차근차근 완수한 모든 분께 축하의 마음을 담아 소정의 선물과 수료증을 드립니다. 🎁
-  </div>
+              <div style={{ marginBottom: 10 }}>
+                미션 1부터 7까지 차근차근 완수한 모든 분께 축하의 마음을 담아 소정의 선물과 수료증을 드립니다. 🎁
+              </div>
 
-  <div style={{ fontSize: 14, color: "#334155" }}>
-    <div style={{ marginBottom: 6 }}>
-      • <b>선물 및 수료증 증정</b>: 모든 미션과 Value-up 세션까지 참석을 완료하시면, 담당자가 확인 후 개별적으로 전달드릴 예정이에요.
-    </div>
-    <div>
-      • <b>미션 수행 관련 문의</b>: 부득이한 사유로 정해진 기한 내에 미션 달성이 어렵다면, 주저하지 말고 담당자에게 미리 문의해 주세요.
-        </div>
-  </div>
-</div>
-<div
-  style={{
-    marginTop: 12,
-    paddingTop: 10,
-    borderTop: "1px dashed #e5e7eb",
-    fontSize: 15,
-    color: "#475569",
-  }}
->
-  📌 <b>문의</b>:{" "}
-  <a
-    href="https://slack.com/app_redirect?channel=C01PP4L905D"
-    target="_blank"
-    rel="noreferrer"
-    style={{ fontWeight: 700, color: "#2563eb", textDecoration: "none" }}
-  >
-    #ask-training
-  </a>
+              <div style={{ fontSize: 14, color: "#334155" }}>
+                <div style={{ marginBottom: 6 }}>
+                  • <b>선물 및 수료증 증정</b>: 모든 미션과 Value-up 세션까지 참석을 완료하시면, 담당자가 확인 후 개별적으로 전달드릴 예정이에요.
+                </div>
+                <div>
+                  • <b>미션 수행 관련 문의</b>: 부득이한 사유로 정해진 기한 내에 미션 달성이 어렵다면, 주저하지 말고 담당자에게 미리 문의해 주세요.
+                </div>
+              </div>
+            </div>
 
-  <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
+            <div
+              style={{
+                marginTop: 12,
+                paddingTop: 10,
+                borderTop: "1px dashed #e5e7eb",
+                fontSize: 15,
+                color: "#475569",
+              }}
+            >
+              📌 <b>문의</b>:{" "}
+              <a
+                href="https://slack.com/app_redirect?channel=C01PP4L905D"
+                target="_blank"
+                rel="noreferrer"
+                style={{ fontWeight: 700, color: "#2563eb", textDecoration: "none" }}
+              >
+                #ask-training
+              </a>
 
-  <a
-    href="https://slack.com/app_redirect?channel=U08SXTW8L00"
-    target="_blank"
-    rel="noreferrer"
-    style={{ fontWeight: 700, color: "#2563eb", textDecoration: "none" }}
-  >
-    💬 Slack DM
-  </a>
+              <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
 
-  <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
+              <a
+                href="https://slack.com/app_redirect?channel=U08SXTW8L00"
+                target="_blank"
+                rel="noreferrer"
+                style={{ fontWeight: 700, color: "#2563eb", textDecoration: "none" }}
+              >
+                💬 Slack DM
+              </a>
 
-  <a
-    href="mailto:hyunjin@krafton.com"
-    style={{ fontWeight: 700, color: "#2563eb", textDecoration: "none" }}
-  >
-    📧 이메일
-  </a>
+              <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
 
-  {/* 클릭 안내 문구 */}
-  <div style={{ marginTop: 6, fontSize: 14, opacity: 0.7 }}>
-    ※ 항목을 클릭하면 해당 채널 또는 DM/이메일로 바로 이동해요.
-  </div>
-</div>
+              <a
+                href="mailto:hyunjin@krafton.com"
+                style={{ fontWeight: 700, color: "#2563eb", textDecoration: "none" }}
+              >
+                📧 이메일
+              </a>
 
-<img
-  src="./images/newimage.png"
-  alt="온보딩 미션 보드"
-  style={{
-    width: "100%",
-    height: "auto",
-    objectFit: "contain",
-    display: "block",
-    borderRadius: 12,
-  }}
-/>
+              <div style={{ marginTop: 6, fontSize: 14, opacity: 0.7 }}>
+                ※ 항목을 클릭하면 해당 채널 또는 DM/이메일로 바로 이동해요.
+              </div>
+            </div>
+
+            <img
+              src="./images/newimage.png"
+              alt="온보딩 미션 보드"
+              style={{
+                width: "100%",
+                height: "auto",
+                objectFit: "contain",
+                display: "block",
+                borderRadius: 12,
+                marginTop: 12,
+              }}
+            />
           </div>
         )}
-      {/* FAQ 탭 시작 */}
-{tab === "FAQ" && (
-  <div style={{ marginTop: 18, display: "grid", gap: 20 }}>
-    <Card title="🙋‍♀️ KRAFTON 온보딩 FAQ: 무엇이든 물어보세요!">
-      <div style={{ fontSize: 14, color: "#64748b", marginBottom: 20, lineHeight: 1.6 }}>
-        온보딩 과정에서 가장 자주 묻는 질문들을 모았습니다. <br />
-        추가로 궁금한 점은 <b>#ask-training</b> 채널이나 담당자에게 언제든 문의해 주세요!
-      </div>
 
-      <div style={{ display: "grid", gap: 12 }}>
-        {FAQ_ITEMS.map((item, idx) => (
-          <details
-            key={idx}
-            style={{
-              border: "1px solid #e2e8f0",
-              borderRadius: 14,
-              background: "#f8fafc",
-              overflow: "hidden",
-            }}
-          >
-            <summary
-              style={{
-                padding: "16px",
-                cursor: "pointer",
-                fontWeight: 700,
-                fontSize: 15,
-                color: "#1e293b",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                listStyle: "none",
-                WebkitAppearance: "none",
-              }}
-            >
-              <span style={{ display: "flex", gap: 8 }}>
-                <b style={{ color: "#2563eb" }}>Q.</b>
-                <span>{item.q.split(". ")[1] ?? item.q}</span>
-              </span>
-              <span style={{ fontSize: 12, opacity: 0.5 }}>▼</span>
-            </summary>
+        {/* FAQ 탭 시작 */}
+        {tab === "FAQ" && (
+          <div style={{ marginTop: 18, display: "grid", gap: 20 }}>
+            <Card title="🙋‍♀️ KRAFTON 온보딩 FAQ: 무엇이든 물어보세요!">
+              <div style={{ fontSize: 14, color: "#64748b", marginBottom: 20, lineHeight: 1.6 }}>
+                온보딩 과정에서 가장 자주 묻는 질문들을 모았습니다. <br />
+                추가로 궁금한 점은 <b>#ask-training</b> 채널이나 담당자에게 언제든 문의해 주세요!
+              </div>
 
-            <div
-              style={{
-                padding: "0 16px 16px",
-                fontSize: 14,
-                lineHeight: 1.7,
-                color: "#475569",
-                borderTop: "1px solid #edf2f7",
-                paddingTop: 12,
-                whiteSpace: "pre-line",
-              }}
-            >
-              <b style={{ color: "#10b981", marginRight: 6 }}>A.</b>
-              {item.a}
+              <div style={{ display: "grid", gap: 12 }}>
+                {FAQ_ITEMS.map((item, idx) => (
+                  <details
+                    key={idx}
+                    style={{
+                      border: "1px solid #e2e8f0",
+                      borderRadius: 14,
+                      background: "#f8fafc",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <summary
+                      style={{
+                        padding: "16px",
+                        cursor: "pointer",
+                        fontWeight: 700,
+                        fontSize: 15,
+                        color: "#1e293b",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        listStyle: "none",
+                        WebkitAppearance: "none",
+                      }}
+                    >
+                      <span style={{ display: "flex", gap: 8 }}>
+                        <b style={{ color: "#2563eb" }}>Q.</b>
+                        <span>{item.q.split(". ")[1] ?? item.q}</span>
+                      </span>
+                      <span style={{ fontSize: 12, opacity: 0.5 }}>▼</span>
+                    </summary>
+
+                    <div
+                      style={{
+                        padding: "0 16px 16px",
+                        fontSize: 14,
+                        lineHeight: 1.7,
+                        color: "#475569",
+                        borderTop: "1px solid #edf2f7",
+                        paddingTop: 12,
+                        whiteSpace: "pre-line",
+                      }}
+                    >
+                      <b style={{ color: "#10b981", marginRight: 6 }}>A.</b>
+                      {item.a}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </Card>
+
+            <div style={{ opacity: 0.8 }}>
+              <Card title="📊 실시간 미션 진행 현황">
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                  <div style={{ fontSize: 14 }}>
+                    현재 <b>{displayName}</b>님은 전체 미션 중 <b>{doneCount}개</b>를 완료하셨습니다.
+                  </div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: "#2563eb" }}>
+                    {MISSIONS.length ? Math.round((doneCount / MISSIONS.length) * 100) : 0}% 완료
+                  </div>
+                </div>
+              </Card>
             </div>
-          </details>
-        ))}
+          </div>
+        )}
+        {/* FAQ 탭 끝 */}
       </div>
-    </Card>
-
-    <div style={{ opacity: 0.8 }}>
-      <Card title="📊 실시간 미션 진행 현황">
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-          <div style={{ fontSize: 14 }}>
-            현재 <b>{displayName}</b>님은 전체 미션 중 <b>{doneCount}개</b>를 완료하셨습니다.
-          </div>
-          <div style={{ fontSize: 13, fontWeight: 700, color: "#2563eb" }}>
-            {MISSIONS.length ? Math.round((doneCount / MISSIONS.length) * 100) : 0}% 완료
-          </div>
-        </div>
-      </Card>
     </div>
-  </div>
-)}
+  );
+}
