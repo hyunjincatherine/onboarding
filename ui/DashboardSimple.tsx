@@ -320,6 +320,14 @@ export default function DashboardSimple({
   const [tab, setTab] = useState<Tab>("Home");
   const [selectedMissionId, setSelectedMissionId] = useState<number>(1);
   const [checked, setChecked] = useState<Record<number, boolean>>({});
+// ✅ 이름 + OT 날짜 입력용 state
+const [profile, setProfile] = useState<{
+  fullName: string;
+  otDate: string;
+}>({
+  fullName: "",
+  otDate: "",
+});
 
   // ✅ 로컬 저장된 체크 상태 복원
   useEffect(() => {
