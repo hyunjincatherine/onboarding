@@ -2,6 +2,15 @@
 
 import { useEffect, useMemo, useState } from "react";
 const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const DEADLINE_BY_ID: Record<number, string> = {
+  1: "OT 이후 1주일 이내",
+  2: "OT 이후 1주일 이내",
+  3: "OT 이후 2주일 이내",
+  4: "OT 이후 2주일 이내",
+  5: "OT 이후 2~3개월 이내",
+  6: "OT 이후 2~3개월 이내",
+  7: "OT 이후 2~3개월 이내",
+};
 const FAQ_ITEMS = [
   {
     q: "Q1. 온보딩 기간은 언제부터 계산하면 될까요?",
@@ -565,12 +574,76 @@ export default function DashboardSimple({
               </div>
             </Card>
 
-            {/* 4) 선택한 미션 상세 */}
-            <Card title="📌 상세 미션 확인하기">
+             {/* 4) 선택한 미션 상세 */}
+             <Card title="📌 상세 미션 확인하기">
               <div style={{ fontSize: 22, fontWeight: 900 }}>
                 {selected.id}. {selected.title}
               </div>
 
+              {/* ===== 여기서부터: 기한 박스 (제목과 해야하는 일 사이) ===== */}
+              <div
+                style={{
+                  marginTop: 12,
+                  borderRadius: 16,
+                  border: "1px solid rgba(37,99,235,0.22)",
+                  background: "linear-gradient(180deg, rgba(239,246,255,1) 0%, rgba(219,234,254,1) 100%)",
+                  boxShadow: "0 10px 26px rgba(37,99,235,0.12)",
+                  overflow: "hidden",
+                }}
+              >
+                <div style={{ display: "flex" }}>
+                  {/* 왼쪽 포인트 바 */}
+                  <div
+                    style={{
+                      width: 7,
+                      background: "linear-gradient(180deg, #2563eb 0%, #3b82f6 100%)",
+                    }}
+                  />
+
+                  <div style={{ padding: "12px 14px", flex: 1 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <div
+                        style={{
+                          width: 30,
+                          height: 30,
+                          borderRadius: 999,
+                          background: "rgba(37,99,235,0.15)",
+                          border: "1px solid rgba(37,99,235,0.25)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: 15,
+                        }}
+                      >
+                        ⏰
+                      </div>
+
+                      <div style={{ fontWeight: 900, color: "#1e3a8a" }}>미션 완료 기한</div>
+
+                      <div
+                        style={{
+                          marginLeft: "auto",
+                          fontSize: 12,
+                          fontWeight: 800,
+                          color: "#1d4ed8",
+                          background: "rgba(37,99,235,0.15)",
+                          border: "1px solid rgba(37,99,235,0.25)",
+                          padding: "4px 10px",
+                          borderRadius: 999,
+                        }}
+                      >
+                        DUE
+                      </div>
+                    </div>
+
+                    <div style={{ marginTop: 8, fontSize: 14, color: "#1e3a8a" }}>
+                      <b>{DEADLINE_BY_ID[selected.id]}</b>
+                      <div style={{ marginTop: 4, fontSize: 12, opacity: 0.8 }}>* OT(Orientation) 기준</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* ===== 기한 박스 끝 ===== */}
               <div style={{ marginTop: 10, lineHeight: 1.7, fontSize: 15, whiteSpace: "pre-line" }}>
                 {selected.detail ?? selected.description}
               </div>
@@ -861,7 +934,7 @@ export default function DashboardSimple({
                   원하시는 답변을 찾지 못하셨나요?
                 </h4>
                 <p style={{ fontSize: "14px", color: "#6b7280", margin: 0 }}>
-                  온보딩 담당자가 여러분의 원활한 적응을 돕기 위해 대기하고 있습니다.
+                  궁금한 점이 있다면 주저 말고 말씀해 주세요! 여러분의 성공적인 시작을 돕기 위해 대기 중입니다.😊
                 </p>
               </div>
 
@@ -941,7 +1014,7 @@ export default function DashboardSimple({
                   onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
                   onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
                 >
-                  <span style={{ marginRight: "8px" }}>📧</span> hyunjin@krafton.com
+                  <span style={{ marginRight: "8px" }}>📧</span> Email
                 </a>
               </div>
             </div>
