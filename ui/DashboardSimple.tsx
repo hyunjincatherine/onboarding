@@ -810,8 +810,6 @@ export default function DashboardSimple({
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-
-                // ✅ marker 숨김 안정화 (환경에 따라 필요)
                 listStyle: "none",
                 WebkitAppearance: "none",
               }}
@@ -853,7 +851,7 @@ export default function DashboardSimple({
           </div>
         </div>
       </Card>
-      </div>
+    </div>
   </div>
 )}
 {/* FAQ 탭 끝 */}
