@@ -2,7 +2,13 @@
 
 import { useEffect, useMemo, useState } from "react";
 const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const todayStr = new Date().toISOString().split("T")[0];
+const todayStr = (() => {
+  const d = new Date();
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
+})();
 const DEADLINE_BY_ID: Record<number, string> = {
   1: "OT 이후 1주일 이내",
   2: "OT 이후 1주일 이내",
@@ -347,12 +353,11 @@ const [profile, setProfile] = useState<{
 
   const doneCount = Object.values(checked).filter(Boolean).length;
   const nextMission = Math.min(MISSIONS.length, doneCount + 1);
-  const recommendedMission =
-  MISSIONS.find((m) => m.id === nextMission) ?? MISSIONS[0];
-  const otDateObj = profile?.otDate ? new Date(profile.otDate) : null;
+  const otDateFromProfile = profile?.otDate ? new Date(profile.otDate) : null;
 
-  const expectedCompleteDate = otDateObj
-    ? new Date(otDateObj.getFullYear(), otDateObj.getMonth() + 3, otDateObj.getDate())
+
+  const expectedCompleteDateFromProfile = otDateFromProfile
+    ? new Date(otDateFromProfile. getFullYear(), otDateFromProfile.getMonth() + 3, otDateFromProfile.getDate())
     : null; 
 
   function formatNameFromEmail(emailStr: string) {
@@ -365,6 +370,45 @@ const [profile, setProfile] = useState<{
   }
 
   const displayName = name ?? (email ? formatNameFromEmail(email) : "새로운 동료");
+  // 날짜를 00:00 기준으로 맞춰서 일수 계산 (타임존 이슈 방지)
+function startOfDay(d: Date) {
+  const x = new Date(d);
+  x.setHours(0, 0, 0, 0);
+  return x;
+}
+
+function addMonths(date: Date, months: number) {
+  const d = new Date(date);
+  d.setMonth(d.getMonth() + months);
+  return d;
+}
+
+const guideName = (profile?.fullName ?? "").trim(); // 이름 없으면 ""
+
+const daysSinceOT = otDateFromProfile
+  ? Math.floor((startOfDay(new Date()).getTime() - startOfDay(otDateFromProfile).getTime()) / 86400000)
+  : null;
+  
+// ✅ OT만으로 추천 구간 결정 (완료 체크와 무관)
+const recommendedMissionIds = useMemo(() => {
+  if (daysSinceOT === null) return [];
+
+  if (daysSinceOT <= 6) return [1, 2];
+  if (daysSinceOT <= 13) return [3, 4];
+  return [5, 6, 7];
+}, [daysSinceOT]);
+const otDateObj = profile.otDate ? new Date(profile.otDate) : null;
+// 대표 추천(단일) 미션
+const recommendedMissionByOT = useMemo(() => {
+  const firstId = recommendedMissionIds[0];
+  return MISSIONS.find((m) => m.id === firstId) ?? null;
+}, [recommendedMissionIds]);
+
+// 예상 수료: OT + 3개월(=미션 5~7까지 포함한 시점)
+const expectedCompleteDate = useMemo(() => {
+  if (!otDateObj) return null;
+  return addMonths(otDateObj, 3);
+}, [profile?.otDate]);
 
   return (
     <div style={{ minHeight: "100vh", background: "#f6f8fb" }}>
@@ -555,22 +599,26 @@ const [profile, setProfile] = useState<{
       </div>
 
       <div style={{ fontWeight: 900, color: "#1e3a8a", lineHeight: 1.4 }}>
-      {(profile.fullName)}님, 지금은{" "}
-      <span style={{ color: "#1d4ed8" }}>미션 {nextMission}</span>를 수행할 시점이에요.
-      </div>
+  {guideName ? `${guideName}님, ` : ""}
+  지금은{" "}
+  <span style={{ color: "#1d4ed8" }}>
+    {recommendedMissionIds.length ? `미션 ${recommendedMissionIds.join(", ")}` : "미션 추천"}
+  </span>
+  을 수행할 시점이에요.
+</div>
 
-      <div style={{ fontSize: 13, color: "#334155", lineHeight: 1.5 }}>
-        추천 미션: <b>{recommendedMission.title}</b>
-      </div>
+<div style={{ fontSize: 13, color: "#334155", lineHeight: 1.5, marginTop: 6 }}>
+  추천 미션:{" "}
+  <b>{recommendedMissionByOT ? recommendedMissionByOT.title : "OT 날짜를 입력하면 추천이 표시돼요"}</b>
+</div>
 
-      <div style={{ fontSize: 13, color: "#334155", lineHeight: 1.5 }}>
-        예상 수료 시점:{" "}
-        <b>{expectedCompleteDate ? expectedCompleteDate.toLocaleDateString() : "OT 날짜를 입력하면 계산돼요"}</b>
-      </div>
+<div style={{ fontSize: 13, color: "#334155", lineHeight: 1.5, marginTop: 4 }}>
+  예상 수료 시점:{" "}
+  <b>
+    {expectedCompleteDateFromProfile ? expectedCompleteDateFromProfile.toLocaleDateString() : "OT 날짜를 입력하면 계산돼요"}
+  </b>
+</div>
 
-      <div style={{ fontSize: 12, opacity: 0.75 }}>
-        * 완료 체크 상태(done) + OT 날짜를 함께 반영해 추천이 업데이트돼요.
-      </div>
     </div>
   </div>
 </Card>
