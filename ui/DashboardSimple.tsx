@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const todayStr = new Date().toISOString().split("T")[0];
 const DEADLINE_BY_ID: Record<number, string> = {
   1: "OT 이후 1주일 이내",
   2: "OT 이후 1주일 이내",
