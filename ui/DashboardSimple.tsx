@@ -855,6 +855,5 @@ export default function DashboardSimple({
       </Card>
       </div>
   </div>
-);
 )}
 {/* FAQ 탭 끝 */}
