@@ -617,8 +617,7 @@ export default function DashboardSimple({
 
                     <div style={{ marginTop: 8, fontSize: 14, color: "#1e3a8a" }}>
                       <b>{DEADLINE_BY_ID[selected.id]}</b>
-                      <div style={{ marginTop: 4, fontSize: 12, opacity: 0.8 }}>* OT(Orientation) 기준</div>
-                    </div>
+                                          </div>
                   </div>
                 </div>
               </div>
