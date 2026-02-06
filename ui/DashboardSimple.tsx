@@ -528,9 +528,76 @@ export default function DashboardSimple({
                 {selected.id}. {selected.title}
               </div>
 
-              <div style={{ marginTop: 10, lineHeight: 1.7, fontSize: 15, whiteSpace: "pre-line" }}>
-                {selected.detail ?? selected.description}
-              </div>
+              <div style={{ marginTop: 10 }}>
+  {/* 상세 텍스트 영역 */}
+  <div style={{ lineHeight: 1.7, fontSize: 15, whiteSpace: "pre-line" }}>
+    {selected.detail ?? selected.description}
+  </div>
+
+  {/* ✅ 상세 내용 안에 포함되는 느낌으로: 기한 고급 박스 */}
+  <div
+    style={{
+      marginTop: 14,
+      borderRadius: 16,
+      border: "1px solid rgba(15, 23, 42, 0.08)",
+      background: "linear-gradient(180deg, rgba(248,250,252,1) 0%, rgba(241,245,249,1) 100%)",
+      boxShadow: "0 10px 24px rgba(15,23,42,0.06)",
+      overflow: "hidden",
+    }}
+  >
+    <div style={{ display: "flex" }}>
+      {/* 왼쪽 포인트 바 */}
+      <div
+        style={{
+          width: 6,
+          background: "linear-gradient(180deg, rgba(37,99,235,1) 0%, rgba(59,130,246,1) 100%)",
+        }}
+      />
+      <div style={{ padding: "12px 14px", flex: 1 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          {/* 아이콘 배지 */}
+          <div
+            style={{
+              width: 28,
+              height: 28,
+              borderRadius: 999,
+              background: "rgba(37,99,235,0.10)",
+              border: "1px solid rgba(37,99,235,0.18)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 15,
+            }}
+          >
+            ⏰
+          </div>
+
+          <div style={{ fontWeight: 900, color: "#0f172a" }}>미션 완료 기한</div>
+
+          <div
+            style={{
+              marginLeft: "auto",
+              fontSize: 12,
+              fontWeight: 800,
+              color: "#2563eb",
+              background: "rgba(37,99,235,0.10)",
+              border: "1px solid rgba(37,99,235,0.16)",
+              padding: "4px 8px",
+              borderRadius: 999,
+            }}
+          >
+            IMPORTANT
+          </div>
+        </div>
+
+        <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: "#334155" }}>
+          {DEADLINE_BY_ID[selected.id]}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
               {selected.linkUrl && (
                 <a
