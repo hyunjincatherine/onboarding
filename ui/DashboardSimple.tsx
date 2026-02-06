@@ -548,7 +548,7 @@ const [profile, setProfile] = useState<{
       </div>
 
       <div style={{ fontWeight: 900, color: "#1e3a8a", lineHeight: 1.4 }}>
-        {guideName}님, 지금은{" "}
+      {(profile.fullName || displayName)}님, 지금은{" "}
         <span style={{ color: "#1d4ed8" }}>미션 {recommendedMission.id}</span>를 수행할 시점이에요.
       </div>
 
