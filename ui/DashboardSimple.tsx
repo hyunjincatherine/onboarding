@@ -3,8 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-
-
 type Mission = {
   id: number;
   title: string;
@@ -20,6 +18,19 @@ type Mission = {
 
 const ADMIN_EMAIL = "hyunjin@krafton.com";
 const STORAGE_KEY = "onboarding_checked_v1";
+
+/**
+ * ✅ 미션별 완료기한(고급 박스에서 사용)
+ */
+const DEADLINE_BY_ID: Record<number, string> = {
+  1: "Day 1 OT로부터 1주일 이내",
+  2: "Day 1 OT로부터 1주일 이내",
+  3: "Day 1 OT로부터 2주일 이내",
+  4: "Day 1 OT로부터 2주일 이내",
+  5: "입사 후 2~3개월 시점까지",
+  6: "입사 후 2~3개월 시점까지",
+  7: "입사 후 2~3개월 시점까지",
+};
 
 const MISSIONS: Mission[] = [
   {
@@ -37,11 +48,7 @@ const MISSIONS: Mission[] = [
 
 📌 체크 포인트
 ● 수령 완료 여부
-● HUB 자기소개 업로드 완료 여부
-
-──────────────
-📅 미션 완료 기한: Day 1 OT로부터 1주일 이내
-──────────────`,
+● HUB 자기소개 업로드 완료 여부`,
     linkUrl: "https://hub.krafton.com/community/board/7",
     linkLabel: "HUB 바로가기",
   },
@@ -58,11 +65,7 @@ const MISSIONS: Mission[] = [
 📌 체크 포인트
 ● AI 활용 지원 제도 확인 여부
 ● HR 주요 제도 (🌟중요: 수습평가 제도) 확인 여부
-● Concur 사용 방법 (법인카드 정산) 확인 여부
-
-──────────────
-📅 미션 완료 기한: Day 1 OT로부터 1주일 이내
-──────────────`,
+● Concur 사용 방법 (법인카드 정산) 확인 여부`,
     links: [
       {
         label: "AI 제도 바로가기",
@@ -93,11 +96,7 @@ const MISSIONS: Mission[] = [
 📌 체크 포인트
 ● 윤리강령과 관련 제도 확인 여부
 ● 정보 보안 가이드 확인 여부
-● 온라인(Teams) 교육 참여 여부
-
-──────────────
-📅 미션 완료 기한: Day 1 OT로부터 2주일 이내
-──────────────`,
+● 온라인(Teams) 교육 참여 여부`,
     links: [
       {
         label: "윤리강령 제도 바로가기",
@@ -121,11 +120,7 @@ const MISSIONS: Mission[] = [
 
 📌 체크 포인트
 ● AI 온라인 교육 1개 이상 수강 여부
-● 핵심가치 사전 학습자료 확인 여부
-
-──────────────
-📅 미션 완료 기한: Day 1 OT로부터 2주일 이내
-──────────────`,
+● 핵심가치 사전 학습자료 확인 여부`,
     links: [
       {
         label: "AI 교육 지원 제도 확인하기",
@@ -162,11 +157,7 @@ const MISSIONS: Mission[] = [
 
 📌 체크 포인트
 ● KLT/AHM 참여 여부
-● 주요 회차 시청 여부
-
-──────────────
-📅 미션 완료 기한: 입사 후 2~3개월 시점까지
-──────────────`,
+● 주요 회차 시청 여부`,
     links: [
       {
         label: "KLT 주요 회차 시청하기",
@@ -194,11 +185,7 @@ const MISSIONS: Mission[] = [
 
 📌 체크 포인트
 ● 핵심가치 교육 참여 여부
-● 창한님과의 만남 참여 여부
-
-──────────────
-📅 미션 완료 기한: 입사 후 2~3개월 시점까지
-──────────────`,
+● 창한님과의 만남 참여 여부`,
     links: [
       {
         label: "Value-up 세션 알아보기",
@@ -220,11 +207,7 @@ const MISSIONS: Mission[] = [
 
 📌 체크 포인트
 ● K-Thanks 게시글 업로드 여부
-● 동기와의 만남 여부
-
-──────────────
-📅 미션 완료 기한: 입사 후 2~3개월 시점까지
-──────────────`,
+● 동기와의 만남 여부`,
     links: [
       {
         label: "K-Thanks 작성하기",
@@ -240,7 +223,15 @@ const MISSIONS: Mission[] = [
 
 type Tab = "Home" | "Mission" | "FAQ";
 
-function Pill({ active, children, onClick }: { active?: boolean; children: any; onClick?: () => void }) {
+function Pill({
+  active,
+  children,
+  onClick,
+}: {
+  active?: boolean;
+  children: any;
+  onClick?: () => void;
+}) {
   return (
     <button
       onClick={onClick}
@@ -313,7 +304,9 @@ export default function DashboardSimple({
     const replaced = local.replace(/[._]/g, " ").trim();
     const parts = replaced.split(" ").filter(Boolean);
     return parts
-      .map((p) => (/[a-zA-Z]/.test(p[0]) ? p.charAt(0).toUpperCase() + p.slice(1) : p))
+      .map((p) =>
+        /[a-zA-Z]/.test(p[0]) ? p.charAt(0).toUpperCase() + p.slice(1) : p
+      )
       .join(" ");
   }
 
@@ -355,7 +348,7 @@ export default function DashboardSimple({
 
       {/* Content */}
       <div style={{ maxWidth: 1120, margin: "0 auto", padding: "22px 18px 38px" }}>
-        {/* ✅ HOME: 4칸 바둑판 + (미션 목록 옆에 디테일) */}
+        {/* ✅ HOME */}
         {tab === "Home" && (
           <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1.5fr", gap: 16, alignItems: "start" }}>
             {/* 1) 입사자 카드 */}
@@ -406,8 +399,8 @@ export default function DashboardSimple({
                   }}
                 >
                   <div>
-                    <b>내 진행 확인</b>
-                    <div style={{ fontSize: 13, opacity: 0.75 }}>완료/미완료를 한 눈에!</div>
+                    <b>FAQ: 자주 묻는 질문 확인하기</b>
+                    <div style={{ fontSize: 13, opacity: 0.75 }}>온보딩 과정에서 궁금한 점이 있으신가요? FAQ에서 답변을 확인해 보세요.</div>
                   </div>
                   <button
                     onClick={() => setTab("FAQ")}
@@ -457,9 +450,9 @@ export default function DashboardSimple({
 
             {/* 3) 미션 목록 */}
             <Card title={`✅ 미션 목록 (진행률 ${doneCount}/${MISSIONS.length})`}>
-            <div style={{ fontSize: 13, opacity: 0.75, marginBottom: 10 }}>
-    🖱️ 미션을 클릭하면 우측에서 상세 내용을 확인할 수 있어요.
-  </div>
+              <div style={{ fontSize: 13, opacity: 0.75, marginBottom: 10 }}>
+                🖱️ 미션을 클릭하면 우측에서 상세 내용을 확인할 수 있어요.
+              </div>
               <div style={{ display: "grid", gap: 10 }}>
                 {MISSIONS.map((m) => (
                   <div
@@ -529,75 +522,76 @@ export default function DashboardSimple({
               </div>
 
               <div style={{ marginTop: 10 }}>
-  {/* 상세 텍스트 영역 */}
-  <div style={{ lineHeight: 1.7, fontSize: 15, whiteSpace: "pre-line" }}>
-    {selected.detail ?? selected.description}
-  </div>
+                {/* 상세 텍스트 영역 */}
+                <div style={{ lineHeight: 1.7, fontSize: 15, whiteSpace: "pre-line" }}>
+                  {selected.detail ?? selected.description}
+                </div>
 
-  {/* ✅ 상세 내용 안에 포함되는 느낌으로: 기한 고급 박스 */}
-  <div
-    style={{
-      marginTop: 14,
-      borderRadius: 16,
-      border: "1px solid rgba(15, 23, 42, 0.08)",
-      background: "linear-gradient(180deg, rgba(248,250,252,1) 0%, rgba(241,245,249,1) 100%)",
-      boxShadow: "0 10px 24px rgba(15,23,42,0.06)",
-      overflow: "hidden",
-    }}
-  >
-    <div style={{ display: "flex" }}>
-      {/* 왼쪽 포인트 바 */}
-      <div
-        style={{
-          width: 6,
-          background: "linear-gradient(180deg, rgba(37,99,235,1) 0%, rgba(59,130,246,1) 100%)",
-        }}
-      />
-      <div style={{ padding: "12px 14px", flex: 1 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          {/* 아이콘 배지 */}
-          <div
-            style={{
-              width: 28,
-              height: 28,
-              borderRadius: 999,
-              background: "rgba(37,99,235,0.10)",
-              border: "1px solid rgba(37,99,235,0.18)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 15,
-            }}
-          >
-            ⏰
-          </div>
+                {/* ✅ “상세” 안에 포함되는 느낌으로: 기한 고급 박스 */}
+                <div
+                  style={{
+                    marginTop: 14,
+                    borderRadius: 16,
+                    border: "1px solid rgba(15, 23, 42, 0.08)",
+                    background:
+                      "linear-gradient(180deg, rgba(248,250,252,1) 0%, rgba(241,245,249,1) 100%)",
+                    boxShadow: "0 10px 24px rgba(15,23,42,0.06)",
+                    overflow: "hidden",
+                  }}
+                >
+                  <div style={{ display: "flex" }}>
+                    {/* 왼쪽 포인트 바 */}
+                    <div
+                      style={{
+                        width: 6,
+                        background:
+                          "linear-gradient(180deg, rgba(37,99,235,1) 0%, rgba(59,130,246,1) 100%)",
+                      }}
+                    />
+                    <div style={{ padding: "12px 14px", flex: 1 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                        {/* 아이콘 배지 */}
+                        <div
+                          style={{
+                            width: 28,
+                            height: 28,
+                            borderRadius: 999,
+                            background: "rgba(37,99,235,0.10)",
+                            border: "1px solid rgba(37,99,235,0.18)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            fontSize: 15,
+                          }}
+                        >
+                          ⏰
+                        </div>
 
-          <div style={{ fontWeight: 900, color: "#0f172a" }}>미션 완료 기한</div>
+                        <div style={{ fontWeight: 900, color: "#0f172a" }}>미션 완료 기한</div>
 
-          <div
-            style={{
-              marginLeft: "auto",
-              fontSize: 12,
-              fontWeight: 800,
-              color: "#2563eb",
-              background: "rgba(37,99,235,0.10)",
-              border: "1px solid rgba(37,99,235,0.16)",
-              padding: "4px 8px",
-              borderRadius: 999,
-            }}
-          >
-            IMPORTANT
-          </div>
-        </div>
+                        <div
+                          style={{
+                            marginLeft: "auto",
+                            fontSize: 12,
+                            fontWeight: 800,
+                            color: "#2563eb",
+                            background: "rgba(37,99,235,0.10)",
+                            border: "1px solid rgba(37,99,235,0.16)",
+                            padding: "4px 8px",
+                            borderRadius: 999,
+                          }}
+                        >
+                          IMPORTANT
+                        </div>
+                      </div>
 
-        <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: "#334155" }}>
-          {DEADLINE_BY_ID[selected.id]}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+                      <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: "#334155" }}>
+                        {DEADLINE_BY_ID[selected.id]}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               {selected.linkUrl && (
                 <a
@@ -693,7 +687,9 @@ export default function DashboardSimple({
                       📮 이메일 보내기
                     </a>
 
-                    <div style={{ fontSize: 13, opacity: 0.75 }}>* 버튼을 누르면 메일 앱이 열리고, 내용이 자동으로 채워져요.</div>
+                    <div style={{ fontSize: 13, opacity: 0.75 }}>
+                      * 버튼을 누르면 메일 앱이 열리고, 내용이 자동으로 채워져요.
+                    </div>
                   </>
                 ) : (
                   <div style={{ fontWeight: 500 }}>
@@ -718,93 +714,19 @@ export default function DashboardSimple({
             }}
           >
             <div style={{ fontWeight: 900, marginBottom: 10 }}>🗺️ 온보딩 미션 보드</div>
-            <div
-  style={{
-    marginBottom: 14,
-    padding: 14,
-    borderRadius: 14,
-    background: "#f8fafc",
-    border: "1px solid #e2e8f0",
-    lineHeight: 1.7,
-    color: "#111827",
-  }}
->
-  <div style={{ fontWeight: 800, marginBottom: 8 }}>
-    아래 미션 보드를 통해 크래프톤에서의 온보딩 미션을 한눈에 확인해 보세요!
-  </div>
 
-  <div style={{ marginBottom: 10 }}>
-    미션 1부터 7까지 차근차근 완수한 모든 분께 축하의 마음을 담아 소정의 선물과 수료증을 드립니다. 🎁
-  </div>
-
-  <div style={{ fontSize: 14, color: "#334155" }}>
-    <div style={{ marginBottom: 6 }}>
-      • <b>선물 및 수료증 증정</b>: 모든 미션과 Value-up 세션까지 참석을 완료하시면, 담당자가 확인 후 개별적으로 전달드릴 예정이에요.
-    </div>
-    <div>
-      • <b>미션 수행 관련 문의</b>: 부득이한 사유로 정해진 기한 내에 미션 달성이 어렵다면, 주저하지 말고 담당자에게 미리 문의해 주세요.
-        </div>
-  </div>
-</div>
-<div
-  style={{
-    marginTop: 12,
-    paddingTop: 10,
-    borderTop: "1px dashed #e5e7eb",
-    fontSize: 15,
-    color: "#475569",
-  }}
->
-  📌 <b>문의</b>:{" "}
-  <a
-    href="https://slack.com/app_redirect?channel=C01PP4L905D"
-    target="_blank"
-    rel="noreferrer"
-    style={{ fontWeight: 700, color: "#2563eb", textDecoration: "none" }}
-  >
-    #ask-training
-  </a>
-
-  <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
-
-  <a
-    href="https://slack.com/app_redirect?channel=U08SXTW8L00"
-    target="_blank"
-    rel="noreferrer"
-    style={{ fontWeight: 700, color: "#2563eb", textDecoration: "none" }}
-  >
-    💬 Slack DM
-  </a>
-
-  <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
-
-  <a
-    href="mailto:hyunjin@krafton.com"
-    style={{ fontWeight: 700, color: "#2563eb", textDecoration: "none" }}
-  >
-    📧 이메일
-  </a>
-
-  {/* 클릭 안내 문구 */}
-  <div style={{ marginTop: 6, fontSize: 14, opacity: 0.7 }}>
-    ※ 항목을 클릭하면 해당 채널 또는 DM/이메일로 바로 이동해요.
-  </div>
-</div>
-
-<img
-  src="./images/newimage.png"
-  alt="온보딩 미션 보드"
-  style={{
-    width: "100%",
-    height: "auto",
-    objectFit: "contain",
-    display: "block",
-    borderRadius: 12,
-  }}
-/>
-
-
-
+            {/* ⚠️ 참고: GitHub Pages(basePath)까지 고려하면 아래처럼 prefix 사용 추천 */}
+            <img
+              src={`${prefix}/images/newimage.png`}
+              alt="온보딩 미션 보드"
+              style={{
+                width: "100%",
+                height: "auto",
+                objectFit: "contain",
+                display: "block",
+                borderRadius: 12,
+              }}
+            />
           </div>
         )}
 
