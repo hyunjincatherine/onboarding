@@ -834,31 +834,28 @@ const expectedCompleteDate = useMemo(() => {
                     </div>
 
                     <a
-                      href={`mailto:${ADMIN_EMAIL}?subject=${encodeURIComponent(
-                        "[Onboarding] All Clear 완료 보고"
-                      )}&body=${encodeURIComponent(
-                        `안녕하세요.\n\n온보딩 미션을 모두 완료했습니다.\n\n- 이름: ${displayName}\n- 이메일: ${
-                          email ?? ""
-                        }\n- 입사일:\n- 완료: ${doneCount}/${MISSIONS.length}\n\n확인 부탁드립니다.\n감사합니다.`
-                      )}`}
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 8,
-                        width: "fit-content",
-                        padding: "10px 12px",
-                        borderRadius: 12,
-                        border: "1px solid #e2e8f0",
-                        background: "white",
-                        fontWeight: 800,
-                        textDecoration: "none",
-                        color: "#111827",
-                      }}
-                    >
-                      📮 이메일 보내기
-                    </a>
+  href="https://forms.office.com/r/wEuDFjssi5"
+  target="_blank"
+  rel="noreferrer"
+  style={{
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    width: "fit-content",
+    padding: "10px 12px",
+    borderRadius: 12,
+    border: "1px solid #e2e8f0",
+    background: "white",
+    fontWeight: 800,
+    textDecoration: "none",
+    color: "#111827",
+  }}
+>
+  📝 Form 제출하기
+</a>
 
-                    <div style={{ fontSize: 13, opacity: 0.75 }}>* 버튼을 누르면 메일 앱이 열리고, 내용이 자동으로 채워져요.</div>
+
+                    <div style={{ fontSize: 13, opacity: 0.75 }}>* 버튼을 누르면 Form이 열려요. 작성 후 제출까지 누르면 완료!</div>
                   </>
                 ) : (
                   <div style={{ fontWeight: 500 }}>
