@@ -479,7 +479,7 @@ const [profile, setProfile] = useState<{
             </Card>
 
             {/* 2) 매뉴얼 카드 */}
-<Card title="🧑‍💼 내 온보딩 추천">
+<Card title="🧑‍💼 나의 미션 일정 확인">
   <div style={{ display: "grid", gap: 12 }}>
     {/* 입력 영역 */}
     <div style={{ display: "grid", gap: 10 }}>
@@ -555,7 +555,7 @@ const [profile, setProfile] = useState<{
       </div>
 
       <div style={{ fontWeight: 900, color: "#1e3a8a", lineHeight: 1.4 }}>
-      {(profile.fullName || displayName)}님, 지금은{" "}
+      {(profile.fullName)}님, 지금은{" "}
       <span style={{ color: "#1d4ed8" }}>미션 {nextMission}</span>를 수행할 시점이에요.
       </div>
 
