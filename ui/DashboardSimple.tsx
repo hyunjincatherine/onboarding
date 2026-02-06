@@ -783,8 +783,8 @@ export default function DashboardSimple({
           </div>
         )}
 
-        {/* FAQ 탭 시작 */}
-        {tab === "FAQ" && (
+               {/* FAQ 탭 시작 */}
+               {tab === "FAQ" && (
           <div style={{ marginTop: 18, display: "grid", gap: 20 }}>
             <Card title="🙋‍♀️ KRAFTON 온보딩 FAQ: 무엇이든 물어보세요!">
               <div style={{ fontSize: 14, color: "#64748b", marginBottom: 20, lineHeight: 1.6 }}>
@@ -843,110 +843,112 @@ export default function DashboardSimple({
               </div>
             </Card>
 
+            {/* 글래스(고급) CTA 박스 — Card와는 별개 div */}
             <div
-  style={{
-    marginTop: "40px",
-    padding: "32px",
-    borderRadius: "20px",
-    backgroundColor: "rgba(255, 255, 255, 0.6)", // 투명도 있는 배경
-    backdropFilter: "blur(10px)", // 글래스모피즘 효과
-    border: "1px solid rgba(255, 255, 255, 0.3)",
-    boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05)",
-    textAlign: "center",
-  }}
->
-  <div style={{ marginBottom: "20px" }}>
-    <h4 style={{ fontSize: "18px", fontWeight: 700, color: "#1f2937", marginBottom: "8px" }}>
-      원하시는 답변을 찾지 못하셨나요?
-    </h4>
-    <p style={{ fontSize: "14px", color: "#6b7280", margin: 0 }}>
-      온보딩 담당자가 여러분의 원활한 적응을 돕기 위해 대기하고 있습니다.
-    </p>
-  </div>
+              style={{
+                marginTop: "40px",
+                padding: "32px",
+                borderRadius: "20px",
+                backgroundColor: "rgba(255, 255, 255, 0.6)",
+                backdropFilter: "blur(10px)",
+                border: "1px solid rgba(255, 255, 255, 0.3)",
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05)",
+                textAlign: "center",
+              }}
+            >
+              <div style={{ marginBottom: "20px" }}>
+                <h4 style={{ fontSize: "18px", fontWeight: 700, color: "#1f2937", marginBottom: "8px" }}>
+                  원하시는 답변을 찾지 못하셨나요?
+                </h4>
+                <p style={{ fontSize: "14px", color: "#6b7280", margin: 0 }}>
+                  온보딩 담당자가 여러분의 원활한 적응을 돕기 위해 대기하고 있습니다.
+                </p>
+              </div>
 
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      gap: "12px",
-      flexWrap: "wrap",
-    }}
-  >
-    {/* Slack 채널 버튼 */}
-    <a
-      href="https://slack.com/app_redirect?channel=C01PP4L905D"
-      target="_blank"
-      rel="noreferrer"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        padding: "12px 20px",
-        borderRadius: "12px",
-        backgroundColor: "#ffffff",
-        color: "#2563eb",
-        fontWeight: 600,
-        fontSize: "14px",
-        textDecoration: "none",
-        boxShadow: "0 2px 8px rgba(37, 99, 235, 0.1)",
-        transition: "all 0.2s ease",
-      }}
-      onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
-      onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-    >
-      <span style={{ marginRight: "8px" }}>📢</span> #ask-training
-    </a>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "12px",
+                  flexWrap: "wrap",
+                }}
+              >
+                {/* Slack 채널 버튼 */}
+                <a
+                  href="https://slack.com/app_redirect?channel=C01PP4L905D"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "12px 20px",
+                    borderRadius: "12px",
+                    backgroundColor: "#ffffff",
+                    color: "#2563eb",
+                    fontWeight: 600,
+                    fontSize: "14px",
+                    textDecoration: "none",
+                    boxShadow: "0 2px 8px rgba(37, 99, 235, 0.1)",
+                    transition: "all 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+                >
+                  <span style={{ marginRight: "8px" }}>📢</span> #ask-training
+                </a>
 
-    {/* Slack DM 버튼 */}
-    <a
-      href="https://slack.com/app_redirect?channel=U08SXTW8L00"
-      target="_blank"
-      rel="noreferrer"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        padding: "12px 20px",
-        borderRadius: "12px",
-        backgroundColor: "#ffffff",
-        color: "#2563eb",
-        fontWeight: 600,
-        fontSize: "14px",
-        textDecoration: "none",
-        boxShadow: "0 2px 8px rgba(37, 99, 235, 0.1)",
-        transition: "all 0.2s ease",
-      }}
-      onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
-      onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-    >
-      <span style={{ marginRight: "8px" }}>💬</span> Slack DM
-    </a>
+                {/* Slack DM 버튼 */}
+                <a
+                  href="https://slack.com/app_redirect?channel=U08SXTW8L00"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "12px 20px",
+                    borderRadius: "12px",
+                    backgroundColor: "#ffffff",
+                    color: "#2563eb",
+                    fontWeight: 600,
+                    fontSize: "14px",
+                    textDecoration: "none",
+                    boxShadow: "0 2px 8px rgba(37, 99, 235, 0.1)",
+                    transition: "all 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+                >
+                  <span style={{ marginRight: "8px" }}>💬</span> Slack DM
+                </a>
 
-    {/* Email 버튼 */}
-    <a
-      href="mailto:hyunjin@krafton.com"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        padding: "12px 20px",
-        borderRadius: "12px",
-        backgroundColor: "#ffffff",
-        color: "#2563eb",
-        fontWeight: 600,
-        fontSize: "14px",
-        textDecoration: "none",
-        boxShadow: "0 2px 8px rgba(37, 99, 235, 0.1)",
-        transition: "all 0.2s ease",
-      }}
-      onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
-      onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-    >
-      <span style={{ marginRight: "8px" }}>📧</span> hyunjin@krafton.com
-    </a>
-              </Card>
+                {/* Email 버튼 */}
+                <a
+                  href="mailto:hyunjin@krafton.com"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "12px 20px",
+                    borderRadius: "12px",
+                    backgroundColor: "#ffffff",
+                    color: "#2563eb",
+                    fontWeight: 600,
+                    fontSize: "14px",
+                    textDecoration: "none",
+                    boxShadow: "0 2px 8px rgba(37, 99, 235, 0.1)",
+                    transition: "all 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+                >
+                  <span style={{ marginRight: "8px" }}>📧</span> hyunjin@krafton.com
+                </a>
+              </div>
             </div>
           </div>
         )}
         {/* FAQ 탭 끝 */}
+
       </div>
     </div>
   );
