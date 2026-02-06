@@ -406,8 +406,8 @@ export default function DashboardSimple({
                   }}
                 >
                   <div>
-                    <b>내 진행 확인</b>
-                    <div style={{ fontSize: 13, opacity: 0.75 }}>완료/미완료를 한 눈에!</div>
+                    <b>FAQ: 자주 묻는 질문 확인하기</b>
+                    <div style={{ fontSize: 13, opacity: 0.75 }}>온보딩 과정에서 궁금한 점을 확인해 보세요.</div>
                   </div>
                   <button
                     onClick={() => setTab("FAQ")}
@@ -421,7 +421,7 @@ export default function DashboardSimple({
                       cursor: "pointer",
                     }}
                   >
-                    진행 탭 →
+                    확인 →
                   </button>
                 </div>
 
@@ -741,49 +741,113 @@ export default function DashboardSimple({
           </div>
         )}
 
-        {/* FAQ */}
-        {tab === "FAQ" && (
-          <div style={{ marginTop: 18 }}>
-            <Card title="📊 내 진행 상황">
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-                <div>
-                  <div style={{ fontSize: 18, fontWeight: 900 }}>{displayName}</div>
-                  <div style={{ marginTop: 6, opacity: 0.75 }}>
-                    완료: <b>{doneCount}</b> / {MISSIONS.length} · 다음 추천: <b>{nextMission}번</b>
-                  </div>
-                </div>
-
-                <div style={{ padding: "10px 12px", borderRadius: 14, border: "1px solid #e2e8f0", background: "#f8fafc" }}>
-                  ✅ All clear 되면(7/7) 담당자 알림도 붙일 수 있어요(옵션)
-                </div>
+      {/* FAQ */}
+      {tab === "FAQ" && (
+          <div style={{ marginTop: 18, display: "grid", gap: 20 }}>
+            <Card title="🙋‍♀️ KRAFTON 온보딩 FAQ: 무엇이든 물어보세요!">
+              <div style={{ fontSize: 14, color: "#64748b", marginBottom: 20, lineHeight: 1.6 }}>
+                온보딩 과정에서 가장 자주 묻는 질문들을 모았습니다. <br />
+                추가로 궁금한 점은 <b>#ask-training</b> 채널이나 담당자에게 언제든 문의해 주세요!
               </div>
 
-              <div style={{ marginTop: 14, display: "grid", gap: 8 }}>
-                {MISSIONS.map((m) => (
-                  <div
-                    key={m.id}
+              <div style={{ display: "grid", gap: 12 }}>
+                {[
+                  {
+                    q: "Q1. 온보딩 기간은 언제부터 계산하면 될까요?",
+                    a: "입사 첫날 진행되는 Day 1 Orientation이 시작점이에요. 담당자가 시기에 맞춰 가이드를 드릴 예정이니, 직접 계산하며 부담 갖지 않으셔도 괜찮습니다. 저희가 잘 챙겨드릴게요!",
+                  },
+                  {
+                    q: "Q2. 업무 일정 때문에 온라인 교육 참석이 어려운데 어쩌죠?",
+                    a: "업무가 우선인 상황이라면 당연히 조정 가능합니다. 담당자에게 미리 사유를 알려주시면, 다음 분기 교육으로 입과 일정을 변경해 드릴게요.",
+                  },
+                  {
+                    q: "Q3. 온보딩 선물은 언제 받을 수 있나요? 🎁",
+                    a: "온보딩 과정을 모두 마치면, 수료 시점에 맞춰 각 거점의 헬프데스크로 선물을 보내드려요. 마지막까지 조금만 더 힘내주세요!",
+                  },
+                  {
+                    q: "Q4. Workday에 수료증 업로드 태스크가 계속 떠 있는데, 무시해도 되나요?",
+                    a: "네, 괜찮습니다! 수료증은 입사 3개월 후 모든 프로세스가 종료되어야 발급되거든요. 그전까지 Workday에 표시되는 날짜는 신경 쓰지 마시고 편하게 넘겨주세요.",
+                  },
+                  {
+                    q: "Q5. 수료증은 실물로 받게 되나요?",
+                    a: "수료증은 PDF 전자 파일로 전달해 드립니다. 파일을 받으신 후 Workday에 업로드해 주시면 최종 완료됩니다.",
+                  },
+                  {
+                    q: "Q6. '창한님과의 만남' 오프라인 참석도 가능한가요?",
+                    a: "강의장 수용 인원이 제한되어 있어 아쉽게도 선착순으로 마감될 예정이에요. 현장 참석을 원하신다면 공지가 떴을 때 빠르게 신청해 주세요!",
+                  },
+                  {
+                    q: "Q7. 참석을 못 하면 내용을 아예 알 수 없나요? 녹화본은요?",
+                    a: "녹화본은 따로 제공되지 않지만, 걱정 마세요! Wiki에 모든 Q&A 내용을 꼼꼼히 기록해 공유해 드릴 예정이니 언제든 확인하실 수 있습니다.",
+                  },
+                  {
+                    q: "Q8. 핵심가치 교육 자료를 따로 소장할 수 있을까요?",
+                    a: "그럼요! 교육 일주일 후에 담당자가 리마인드 학습 자료를 보내드립니다. 업무 중에 참고가 필요할 때마다 유용하게 활용해 보세요.",
+                  },
+                  {
+                    q: "Q9. 온보딩을 수료하지 않으면 혹시 불이익이 있나요?",
+                    a: "직접적인 불이익은 없습니다. 다만, 온보딩 미션들은 여러분의 원활한 적응을 돕기 위한 필수 정보들을 담고 있어요. 성공적인 회사 생활을 위해 수료하시는 것을 적극 권장합니다.",
+                  },
+                  {
+                    q: "Q10. 온보딩 프로그램 대상자는 누구인가요?",
+                    a: "KRAFTON HQ와 PUBG STUDIOS의 모든 구성원이 대상입니다. (정규직, 계약직, 인턴, 전문계약직 포함) 우리 모두 함께해요!",
+                  },
+                ].map((item, idx) => (
+                  <details
+                    key={idx}
                     style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      padding: 12,
+                      border: "1px solid #e2e8f0",
                       borderRadius: 14,
-                      border: "1px solid #e9eef5",
-                      background: "white",
+                      background: "#f8fafc",
+                      overflow: "hidden",
                     }}
                   >
-                    <div>
-                      <b>
-                        {m.id}. {m.title}
-                      </b>
+                    <summary
+                      style={{
+                        padding: "16px",
+                        cursor: "pointer",
+                        fontWeight: 700,
+                        fontSize: 15,
+                        color: "#1e293b",
+                        listStyle: "none",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span>{item.q}</span>
+                      <span style={{ fontSize: 12, opacity: 0.5 }}>▼</span>
+                    </summary>
+                    <div
+                      style={{
+                        padding: "0 16px 16px",
+                        fontSize: 14,
+                        lineHeight: 1.7,
+                        color: "#475569",
+                        borderTop: "1px solid #edf2f7",
+                        paddingTop: 12,
+                        whiteSpace: "pre-line",
+                      }}
+                    >
+                      <b>A.</b> {item.a}
                     </div>
-                    <div style={{ fontWeight: 800 }}>{checked[m.id] ? "완료 ✅" : "미완료 ⏳"}</div>
-                  </div>
+                  </details>
                 ))}
               </div>
             </Card>
+
+            {/* 하단 진행 현황 (FAQ 밑에 작게 배치하여 UX 유지) */}
+            <div style={{ opacity: 0.8 }}>
+              <Card title="📊 실시간 미션 진행 현황">
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                  <div style={{ fontSize: 14 }}>
+                    현재 <b>{displayName}</b>님은 전체 미션 중 <b>{doneCount}개</b>를 완료하셨습니다.
+                  </div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: "#2563eb" }}>
+                    {Math.round((doneCount / MISSIONS.length) * 100)}% 완료
+                  </div>
+                </div>
+              </Card>
+            </div>
           </div>
         )}
-      </div>
-    </div>
-  );
-}
